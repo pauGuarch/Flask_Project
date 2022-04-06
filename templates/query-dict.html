@@ -1,0 +1,43 @@
+{% extends "layout.html"%}
+{% block body%}
+	
+	<script type="application/javascript">
+		$(document).ready(function(){
+			var text="";
+			$.getJSON("/productes",function(data){
+				$.each(data.websites, function(key, value){
+				console.log(value.website_id);
+				console.log(value.domini);
+				console.log(value.nom);
+				console.log(value.pagines);
+				console.log(value.usuari);
+				text+="<tr><td>"+value.website_id+"</td><td>" +value.domini+"</td><td>"+value.nom+"</td><td>"+value.pagines+"</td><td>"+value.usuari+"</td></tr>";
+				$('#text_json').html(text);
+				});
+			});
+		});	
+	</script>
+	
+<div id="table-wrapper">
+  <div id="table-scroll2">
+	<table class="" border="1">
+		<thead class="text">
+			<tr>
+				<td>Id</td>
+				<td>Domini</td>
+				<td>Tipus</td>
+				<td>Pagines</td>
+				<td>Usuari</td>
+				
+			</tr>
+		</thead>
+		<tbody id="text_json">
+			
+		</tbody>
+	
+	</table>
+	</div>
+</div>
+<img height="680" width="1519" src="{{url_for('static', filename='background3.jpg')}}"/>	
+	
+{% endblock %}

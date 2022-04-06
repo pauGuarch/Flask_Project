@@ -1,0 +1,26 @@
+{% extends "layout.html"%}
+
+{% block body%}
+	<div class="websites-link">
+	<a href="{{url_for('show_websites')}}">VOLVER A PRODUCTOS</a>
+	</div>
+	<form class="update-form" action="{{url_for('update_website', id = website[0].website_id)}}" method="POST">
+	
+		<p>DOMINI&nbsp;<input type="text" name="dominio" value="{{website[0].domini}}">
+		TIPUS 
+		<select id="type" name="web-types" >
+		<option>Selecciona un valor</option>
+		{% for x in types %}				
+			<option value="{{x.type_id}}" {{'selected' if x.type_id== website[0].tipus}}>{{x.nom}}</option>		
+		{% endfor %}	
+		</select>		
+	
+		PAGINES&nbsp;<input type="number" name="pagina" min="1" max="2147483647" value="{{website[0].pagines}}">
+		USUARI&nbsp;<input type="text" name="usuari" value="{{website[0].usuari}}"></p><br>
+		<input type="submit" value="Modificar"><br><br>
+		
+	</form>
+	
+<img height="680" width="1519" src="{{url_for('static', filename='background3.jpg')}}"/>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "layout.html"%}
+{% block body%}
+
+	<div class="websites-link">
+	<a href="{{url_for('show_websites')}}">CONSULTAR REGISTROS</a>
+	</div>
+	<script src="{{url_for('static', filename='functions.js')}}"></script>
+	<form class="insert-form" action='{{url_for("add_website")}}' method='POST'>
+	
+		<p>Dominio Web <input id="domini" required type = "text" name ="dominio" /></p>
+		<p>Tipo de web 
+			<select id="type" required name="web-types">
+			<option value="">Selecciona un valor</option>
+			{% for x in types %}				
+				<option value="{{x.type_id}}">{{x.nom}}</option>		
+			{% endfor %}	
+			</select>		
+		</p>
+		<p>Numero de pàginas <input id="pagines" required min="1" max="2147483647" type ="number" name = "paginas" /></p>
+		<p>Usuario <input id="usuari" required type = "text" name = "usuario" /></p>
+		<p> <input type = "submit" value = "Registra" /></p>
+		
+    </form>	
+	<img height="680" width="1519" src="{{url_for('static', filename='background3.jpg')}}"/>
+	
+	 
+{% endblock %}

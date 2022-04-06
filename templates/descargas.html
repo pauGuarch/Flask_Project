@@ -1,0 +1,35 @@
+{% extends "layout.html"%}
+{% block body%}
+<script src="functions.js"></script>
+<script type="application/javascript">
+		$(document).ready(function(){
+			var text="";
+			$.getJSON("/productes",function(data){
+				$.each(data.websites, function(key, value){
+				console.log(value.website_id);
+				console.log(value.domini);
+				console.log(value.nom);
+				console.log(value.pagines);
+				console.log(value.usuari);
+				text+="<tr><td>"+value.website_id+"</td><td>" +value.domini+"</td><td>"+value.nom+"</td><td>"+value.pagines+"</td><td>"+value.usuari+"</td></tr>";
+				$('#text_json').html(text);
+				});
+			});
+		});	
+	</script>
+
+
+	<div class="descargas-link2">
+	<a download="registros_web.txt" href="{{url_for('productes')}}" >Descarga los datos en formato txt</a>
+	</div>
+	
+	<div class="descargas-link">
+	<a download="registros_web.json" href="{{url_for('productes')}}" >Descarga los datos en formato Json</a>
+	</div>
+	
+
+
+
+	<img height="680" width="1519" src="{{url_for('static', filename='background3.jpg')}}"/>
+	 
+{% endblock %}

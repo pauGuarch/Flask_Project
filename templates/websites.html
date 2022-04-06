@@ -1,0 +1,44 @@
+{% extends "layout.html"%}
+{% block body%}
+
+<div class="websites-link">
+<a href="{{ url_for('gestio') }}">INSERTAR REGISTRO</a>
+</div>
+
+<div id="table-wrapper">
+  <div id="table-scroll">
+	<table class="" border="1">
+		<thead class="text">
+			<tr>
+				<td>DOMINIO</td>
+				<td>TIPO</td>
+				<td>PAGINAS</td>
+				<td>USUARIO</td>
+				<td>IMAGEN</td>
+				<td>ACCIONES</td>
+			</tr>
+		</thead>
+		<tbody>
+		{% for website in websites %}
+			<tr>
+				<td>{{website.domini}}</td>
+				<td>{{website.nom}}</td>
+				<td>{{website.pagines}}</td>
+				<td>{{website.usuari}}</td>
+				<td><img height="30" width="80" src="{{url_for('static', filename=website.image)}}"/></td>
+				<td>
+					<a href="{{url_for('get_website', id = website.website_id)}}">editar</a>
+					<a href="/delete/{{website.website_id}}">eliminar</a>
+				</td>
+			</tr>
+		{% endfor %}
+		
+		</tbody>
+	
+	</table>
+  </div>
+</div>
+
+
+<img height="680" width="1519" src="{{url_for('static', filename='background3.jpg')}}"/>
+{% endblock %}

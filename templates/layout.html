@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<title>ABASI Concepts</title>
+		<link rel="stylesheet" type="text/css" href="{{url_for('static',
+		filename ='styles.css')}}"></link>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		
+	</head>
+	
+	<body>
+		<header>
+			<img class="img" src="{{url_for('static', filename='logo2.svg')}}">
+			<nav class="topnav">
+				<ul>    
+				    <li><a {{contacta_active}} href="{{ url_for('descargas') }}">Descargas </a></li>
+					<li><a {{gestio_active}} href="{{ url_for('querydict') }}">Productes</a></li>
+				    <li><a {{productes_active}} href="{{ url_for('gestio') }}">Gestio</a></li>
+				    <li><a {{home_active}} href="{{ url_for('index') }}">Home</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+		{% block body %}	
+		{% endblock %}
+		</main>
+		<footer class="footer">
+		<a class="footer-text">ABASI CONCEPTS S.L &ensp;  Casa de la Gominola, Calle de la Piruleta del País Feliz CP:09999 Teléfono: 333444555</a>
+		</footer>
+	</body>
+</html>
